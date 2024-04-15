@@ -2,7 +2,7 @@ namespace Domain.Entities;
 
 public class Person: BaseEntity
 {
-    public FullName FullName { get; private set; }
+    public Fullname Fullname { get; private set; }
     public Gender Gender { get; private set; }
     public DateTimeOffset BirthDate { get; private set; }
 
@@ -13,13 +13,13 @@ public class Person: BaseEntity
     public string TelegramId { get; private init; }
 
     public Person(
-        FullName fullName,
+        Fullname fullname,
         Gender gender,
         DateTimeOffset birth,
         string phoneNumber,
         string telegramId)
     {
-        FullName = fullName;
+        Fullname = fullname;
         Gender = gender;
         BirthDate = birth;
         PhoneNumber = phoneNumber;
