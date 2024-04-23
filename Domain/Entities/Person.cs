@@ -4,18 +4,24 @@ public class Person: BaseEntity
 {
     public Fullname Fullname { get; private set; }
     public Gender Gender { get; private set; }
-    public DateTimeOffset BirthDate { get; private set; }
+    public DateTime BirthDate { get; private set; }
 
-    public int Age => (DateTimeOffset.UtcNow - BirthDate).Days / 365;
-    
+
     public string PhoneNumber { get; private set; }
-    
     public string TelegramId { get; private init; }
-
+    public int Age {
+        get
+        {
+            var today = DateTime.Today;
+            var age = today.Year - BirthDate.Year;
+            if (BirthDate.Date > today.AddYears(-age)) age--;
+            return age;
+        }
+    }
     public Person(
         Fullname fullname,
         Gender gender,
-        DateTimeOffset birth,
+        DateTime birth,
         string phoneNumber,
         string telegramId)
     {
